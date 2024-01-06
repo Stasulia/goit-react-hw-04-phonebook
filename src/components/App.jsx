@@ -6,14 +6,10 @@ import Filter from './Filter/Filter';
 
 export const App = () => {
   const [contacts, setContacts] = useState([]);
-  // const [contacts, setContacts] = useState(() => JSON.parse(localStorage.getItem('contacts')) || []);
+  //  const [contacts, setContacts] = useState(
+  //    () => JSON.parse(localStorage.getItem('contacts')) ?? []
+  //  );
   const [filter, setFilter] = useState('');
-
-  //   useEffect(() => {
-  //     const contactsFromLocalStorage = localStorage.getItem('contacts') || [];
-  //     setContacts(JSON.parse(contactsFromLocalStorage));
-  //     }, [contacts]);
-  //  }
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -26,7 +22,7 @@ export const App = () => {
       name,
       number,
     };
-    //     // const isDuplicated =
+
     contacts.find(el => el.name.toLowerCase() === name.toLowerCase())
       ? alert(`${name} is already in contacts`)
       : setContacts(prevState => [...prevState, newContact]);
